@@ -3013,7 +3013,7 @@ _kbusMapAperture_GM107
     NvU32               swizzId = KMIGMGR_SWIZZID_INVALID;
     NvU32               gfid;
 
-    if (kbusIsStaticBar1Enabled(pGpu, pKernelBus) &&
+    /*if (kbusIsStaticBar1Enabled(pGpu, pKernelBus) &&
         (memdescGetAddressSpace(pMemDesc) == ADDR_FBMEM))
     {
         NV_ASSERT_OK_OR_RETURN(vgpuGetCallingContextGfid(pGpu, &gfid));
@@ -3021,7 +3021,7 @@ _kbusMapAperture_GM107
         return kbusGetStaticFbAperture_HAL(pGpu, pKernelBus, pMemDesc,
                                            offset, pAperOffset,
                                            pLength, gfid);
-    }
+    }*/
 
     // Ensure that the BAR1 VA space is the same across all subdevices
     if (IsSLIEnabled(pGpu) && ((mapFlags & BUS_MAP_FB_FLAGS_MAP_UNICAST) == 0))
@@ -3136,12 +3136,12 @@ _kbusUnmapAperture_GM107
     NV_STATUS           rmStatus = NV_OK;
     VirtMemAllocator   *pDma = GPU_GET_DMA(pGpu);
 
-    if (kbusIsStaticBar1Enabled(pGpu, pKernelBus) &&
+    /*if (kbusIsStaticBar1Enabled(pGpu, pKernelBus) &&
         (memdescGetAddressSpace(pMemDesc) == ADDR_FBMEM))
     {
         // No op for the static bar1 mode
         return NV_OK;
-    }
+    }*/
 
     rmStatus = dmaFreeMapping_HAL(pGpu, pDma, pVAS, aperOffset, pMemDesc, 0, NULL);
 
