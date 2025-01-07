@@ -1008,7 +1008,7 @@ kbusInitBar1_GM107(OBJGPU *pGpu, KernelBus *pKernelBus, NvU32 gfid)
     //
     NV_ASSERT(pKernelBus->bar1[gfid].apertureLength <= kbusGetPciBarSize(pKernelBus, 1));
 
-    bBar1P2PCapable = kbusIsBar1P2PCapable(pGpu, pKernelBus, gfid);
+    bBar1P2PCapable = kbusIsBar1P2PCapable_GH100(pGpu, pKernelBus, gfid);
 
     //
     // If we need to preserve a console mapping at the start of BAR1, we
