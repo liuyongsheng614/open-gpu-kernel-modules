@@ -1094,7 +1094,7 @@ kbusInitBar1_GM107(OBJGPU *pGpu, KernelBus *pKernelBus, NvU32 gfid)
     {
         // Enable the static BAR1 mapping for the BAR1 P2P
         NV_ASSERT_OK_OR_GOTO(rmStatus,
-                             kbusEnableStaticBar1Mapping_HAL(pGpu, pKernelBus, gfid),
+                             kbusEnableStaticBar1Mapping_GH100(pGpu, pKernelBus, gfid),
                              kbusInitBar1_failed);
     }
     else
