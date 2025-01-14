@@ -192,6 +192,8 @@ static int nv_resize_pcie_bars(struct pci_dev *pci_dev) {
 
     // Check if BAR1 has PCIe rebar capabilities
     sizes = pci_rebar_get_possible_sizes(pci_dev, NV_GPU_BAR1);
+    // Print BAR1 Size
+    nv_printf(NV_DBG_INFO, "NVRM: BAR1 sizes `%d`.\n", sizes);
     if (sizes == 0) {
         /* ReBAR not available. Nothing to do. */
         return 0;
