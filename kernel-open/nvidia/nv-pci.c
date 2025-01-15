@@ -192,15 +192,14 @@ static int nv_resize_pcie_bars(struct pci_dev *pci_dev) {
 
     // Check if BAR1 has PCIe rebar capabilities
     sizes = pci_rebar_get_possible_sizes(pci_dev, NV_GPU_BAR1);
-    // Print BAR1 Size
-    nv_printf(LEVEL_ERROR, "NVRM: BAR1 sizes `%d`.\n", sizes);
     if (sizes == 0) {
         /* ReBAR not available. Nothing to do. */
         return 0;
     }
 
     /* Try to resize the BAR to the largest supported size */
-    requested_size = fls(sizes) - 1;
+    // requested_size = fls(sizes) - 1;
+    requested_size = fls(sizes) / 8 - 1;
 
     /* Save the current size, just in case things go wrong */
     old_size = pci_rebar_bytes_to_size(pci_resource_len(pci_dev, NV_GPU_BAR1));
